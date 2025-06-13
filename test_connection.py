@@ -1,6 +1,8 @@
 import time
 from fairino import Robot
 robot = Robot.RPC('192.168.58.2')
+error = robot.SetSpeed(15)
+print("Setting global speed error code:",error)
 for i in range(4320):
     ret = robot.Mode(1) #Robot cut to manual mode
     print("Robot cut to manual mode", ret)
@@ -8,9 +10,9 @@ for i in range(4320):
     ret = robot.Mode(0)
     print("Robot cut to automatic mode", ret)
     time.sleep(4)
-    desc_pos1 = [36.794,-475.119, 65.379, -176.938, 2.535, -179.829]
-    desc_pos2 = [136.794,-475.119, 65.379, -176.938, 2.535, -179.829]
-    desc_pos3 = [236.794,-475.119, 65.379, -176.938, 2.535, -179.829]
+    desc_pos1 = [167.8, -224.0, 705.8, -177.5, 0, -37.2]
+    desc_pos2 = [179.3, -213.6, 363.9, -177.5, 0, -37.2]
+    desc_pos3 = [342.0, 1.5, 375.9 -177.5, 0, -37.2]
     tool = 0 #Tool coordinate system number
     user = 0 #Workpiece coordinate system number
     ret = robot.MoveL(desc_pos1, tool, user) # Cartesian space linear motion
